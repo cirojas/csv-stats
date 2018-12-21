@@ -7,6 +7,41 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal">
+            <ComboBox Name="ListaExport" Width="150" Height="25" SelectedIndex="0">
+                <ComboBoxItem>Mostrar en ventana</ComboBoxItem>
+                <ComboBoxItem>Exportar Archivo</ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="ListaSeparador" HorizontalAlignment="Left" Width="200" Height="25" SelectedIndex="0" Margin="5">
+                <ComboBoxItem>Separador: Coma ( , )</ComboBoxItem>
+                <ComboBoxItem>Separador: Punto y Coma ( ; )</ComboBoxItem>
+                <ComboBoxItem>Separador: Barra ( | )</ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="ListaOpciones" HorizontalAlignment="Left" Width="200" Height="25" SelectedIndex="0">
+                <ComboBoxItem>Contar Distintos en columna</ComboBoxItem>
+                <ComboBoxItem>Contar Frecuencia</ComboBoxItem>
+            </ComboBox>
+
+            <Button Content="Abrir y generar"  Margin="5" Width="105" Click="OpenButton_Click"/>
+        </StackPanel>
         
+        <DockPanel Margin="10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" LastChildFill="True">
+            <Label Content="Output:" DockPanel.Dock="Top"/>
+            <ScrollViewer  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                
+                <TextBox Name="OutputTextBlock" Background="Transparent"
+                     Text="{Binding Text, Mode=OneWay}"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap" />
+
+            </ScrollViewer>
+        </DockPanel>
     </Grid>
 </Window>
